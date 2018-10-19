@@ -1,7 +1,9 @@
 package com.example.bootTest.app.db.dao;
 
 import com.example.bootTest.app.db.entity.Document;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface DocumentMapper {
     int deleteByPrimaryKey(Long id);
 
