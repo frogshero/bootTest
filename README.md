@@ -70,15 +70,16 @@ run web工程下的BootTestApplication
 浏览器输入：http://localhost:8080/test 可见“test”
 
 ### 6:springboot打包的问题
-在terminal窗口build
-gradlew build -x test
+在terminal窗口build<br>
+gradlew build -x test<br>
 可以在web项目下的build\libs目录下看到bootTest-web-0.0.1-SNAPSHOT.jar<br>
 用Java jar bootTest-web-0.0.1-SNAPSHOT.jar可以运行<br>
 但是可以发现文件有60多M ？？？<br>
 打开发现BOOT-INF\lib中<br>
-bootTest-app-0.0.1-SNAPSHOT.jar
-bootTest-common-0.0.1-SNAPSHOT.jar都有20多M
-可见spring boot的gradle 插件把app和common都搞成boot jar，实际上我们只要bootTest-web-0.0.1-SNAPSHOT.jar是boot jar就可以<br>
+bootTest-app-0.0.1-SNAPSHOT.jar<br>
+bootTest-common-0.0.1-SNAPSHOT.jar都有20多M<br>
+可见spring boot的gradle 插件把app和common都搞成boot jar，
+实际上我们只要bootTest-web-0.0.1-SNAPSHOT.jar是boot jar就可以<br>
 按文档https://docs.spring.io/spring-boot/docs/2.0.6.RELEASE/gradle-plugin/reference/html/#managing-dependencies-using-in-isolation<br>
 不是所有子项目都需要apply plugin: 'org.springframework.boot'<br>
 所以把更目录build.gradle的subprojects块内的apply plugin: 'org.springframework.boot'去掉，<br>
