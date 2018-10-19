@@ -1,0 +1,7 @@
+archivesBaseName = 'bootTest-web'
+
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+	compile project(":app")
+}

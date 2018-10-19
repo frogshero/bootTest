@@ -1,0 +1,3 @@
+rootProject.name = 'bootTest'
+
+include 'web', 'app', 'common'

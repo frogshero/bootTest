@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--
+        <classPathEntry location="/../ojdbc6.jar"/>
+    -->
+    <context id="MBG" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="${dbDriver}"
+                        connectionURL="${dbUrl}"
+                        userId="${dbUser}" password="${dbPwd}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.example.bootTest.db.entity"
+                            targetProject="${targetProject}">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="false"/>
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="com.example.bootTest.db.mapper"
+                         targetProject="${targetProject}">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.example.bootTest.db.dao"
+                             targetProject="${targetProject}">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <table tableName="address" domainObjectName="Address" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false" />
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="document" domainObjectName="Document" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false" />
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <!--<table tableName="%" enableCountByExample="false"-->
+            <!--enableUpdateByExample="false" enableDeleteByExample="false"-->
+            <!--enableSelectByExample="false" selectByExampleQueryId="false">-->
+            <!--<property name="useActualColumnNames" value="false" />-->
+            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+
+    </context>
+
+</generatorConfiguration>
