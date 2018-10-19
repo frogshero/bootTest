@@ -15,10 +15,12 @@ boot版本2.06
 common新建文件build.gradle，内容就一行：
 archivesBaseName = 'bootTest-common'
 app的内容为：
+```
 archivesBaseName = 'bootTest-app'
 dependencies {
 	compile project(":common")
 }
+```
 web的内容为：
 ```
 archivesBaseName = 'bootTest-web'
@@ -30,10 +32,12 @@ dependencies {
 ### 3:添加子项目
 根目录的settings.gradle 添加：include 'web', 'app', 'common'
 根目录的build.gradle：把除了buildscript之外的内容全部扩在subprojects里：
+```
 subprojects {
 	apply plugin: 'java'
 	......
 }
+```
 
 ### 4：配置数据源，security
 在web下的src/main/resource/application.properties添加数据源配置：
@@ -47,6 +51,7 @@ spring.security.user.password=aa
 spring.security.user.roles=admin
 
 web工程下的BootTestApplication改写如下：
+```
 @SpringBootApplication
 @RestController
 public class BootTestApplication {
@@ -58,7 +63,7 @@ public class BootTestApplication {
 	  return "test";
 	}
 }
-
+```
 ### 5:测试启动
 用ideal导入整个项目
 run web工程下的BootTestApplication
@@ -79,11 +84,13 @@ bootTest-common-0.0.1-SNAPSHOT.jar都有20多M
 不是所有子项目都需要apply plugin: 'org.springframework.boot'
 所以把更目录build.gradle的subprojects块内的apply plugin: 'org.springframework.boot'去掉，
 移动到web的build.gradle中，在subprojects增加
+```
 dependencyManagement {
 	imports {
 		mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
 	}
 }
+```
 
 再gradlew build -x test
 可以发现bootTest-web-0.0.1-SNAPSHOT.jar变为20多M
@@ -101,7 +108,9 @@ generatorConfig-mysql.xml
 mybatis.mapper-locations=classpath:mapper/*.xml,classpath:mapper/ext/*.xml
 mybatis.type-aliases-package=com.example.bootTest.app.db.entity
 在APP项目的com.example.demo4.app下增加类Appconfig:
+```
 @Configuration
 @MapperScan("com.example.demo4.app.db.dao")
 public class AppConfig {
 }
+```
