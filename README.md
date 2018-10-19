@@ -26,7 +26,7 @@ dependencies {<br>
 	compile project(":app")<br>
 }
 ```
-<br>
+
 ### 3:添加子项目
 根目录的settings.gradle 添加：include 'web', 'app', 'common'<br>
 根目录的build.gradle：把除了buildscript之外的内容全部扩在subprojects里：<br>
@@ -34,7 +34,7 @@ subprojects {<br>
 	apply plugin: 'java'<br>
 	......<br>
 }<br>
-<br>
+
 ### 4：配置数据源，security
 在web下的src/main/resource/application.properties添加数据源配置：<br>
 spring.datasource.driver-class-name=com.mysql.jdbc.Driver<br>
@@ -45,7 +45,7 @@ spring security用户配置<br>
 spring.security.user.name=aa<br>
 spring.security.user.password=aa<br>
 spring.security.user.roles=admin<br>
-<br>
+
 web工程下的BootTestApplication改写如下：<br>
 @SpringBootApplication<br>
 @RestController<br>
@@ -58,13 +58,12 @@ public class BootTestApplication {<br>
 	  return "test";<br>
 	}<br>
 }<br>
-<br>
+
 ### 5:测试启动
 用ideal导入整个项目<br>
 run web工程下的BootTestApplication<br>
 浏览器输入：http://localhost:8080/test 可见“test”<br>
-<br>
-<br>
+
 ### 6:springboot打包的问题
 在terminal窗口build<br>
 gradlew build -x test<br>
@@ -85,10 +84,10 @@ dependencyManagement {<br>
 		mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES<br>
 	}<br>
 }<br>
-<br>
+
 再gradlew build -x test<br>
 可以发现bootTest-web-0.0.1-SNAPSHOT.jar变为20多M<br>
-<br>
+
 ### 7:mybatis自动生成和其他配置
 增加mybatis自动生成：<br>
 bootTest根目录下增加文件：<br>
@@ -105,5 +104,4 @@ mybatis.type-aliases-package=com.example.bootTest.app.db.entity<br>
 @Configuration<br>
 @MapperScan("com.example.demo4.app.db.dao")<br>
 public class AppConfig {<br>
-}<br>
-<br>
+}
