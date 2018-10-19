@@ -105,6 +105,7 @@ build-mybatis.gradle<br>
 generatorConfig-mysql.xml<br>
 内容见源代码<br>
 命令行运行gradlew mymy 生成xml mapper和entity,dao<br>
+把生成的dao加上@Repository
 
 刚开始在依赖里已经选了myBatis<br>
 在web的application.properties里增加配置：
