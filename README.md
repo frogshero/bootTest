@@ -72,17 +72,16 @@ run web工程下的BootTestApplication
 ### 6:springboot打包的问题
 在terminal窗口build
 gradlew build -x test
-可以在web项目下的build\libs目录下看到bootTest-web-0.0.1-SNAPSHOT.jar
-用Java jar bootTest-web-0.0.1-SNAPSHOT.jar可以运行
-但是可以发现文件有60多M ？？？
-打开发现BOOT-INF\lib中
+可以在web项目下的build\libs目录下看到bootTest-web-0.0.1-SNAPSHOT.jar<br>
+用Java jar bootTest-web-0.0.1-SNAPSHOT.jar可以运行<br>
+但是可以发现文件有60多M ？？？<br>
+打开发现BOOT-INF\lib中<br>
 bootTest-app-0.0.1-SNAPSHOT.jar
 bootTest-common-0.0.1-SNAPSHOT.jar都有20多M
-可见spring boot的gradle 插件把app和common都搞成boot jar，实际上我们只要bootTest-web-0.0.1-SNAPSHOT.jar
-是boot jar就可以
-按文档https://docs.spring.io/spring-boot/docs/2.0.6.RELEASE/gradle-plugin/reference/html/#managing-dependencies-using-in-isolation
-不是所有子项目都需要apply plugin: 'org.springframework.boot'
-所以把更目录build.gradle的subprojects块内的apply plugin: 'org.springframework.boot'去掉，
+可见spring boot的gradle 插件把app和common都搞成boot jar，实际上我们只要bootTest-web-0.0.1-SNAPSHOT.jar是boot jar就可以<br>
+按文档https://docs.spring.io/spring-boot/docs/2.0.6.RELEASE/gradle-plugin/reference/html/#managing-dependencies-using-in-isolation<br>
+不是所有子项目都需要apply plugin: 'org.springframework.boot'<br>
+所以把更目录build.gradle的subprojects块内的apply plugin: 'org.springframework.boot'去掉，<br>
 移动到web的build.gradle中，在subprojects增加
 ```
 dependencyManagement {
@@ -96,17 +95,19 @@ dependencyManagement {
 可以发现bootTest-web-0.0.1-SNAPSHOT.jar变为20多M
 
 ### 7:mybatis自动生成和其他配置
-增加mybatis自动生成：
-bootTest根目录下增加文件：
-build-mybatis.gradle
-generatorConfig-mysql.xml
-内容见源代码
-命令行运行gradlew mymy 生成xml mapper和entity,dao
+增加mybatis自动生成：<br>
+bootTest根目录下增加文件：<br>
+build-mybatis.gradle<br>
+generatorConfig-mysql.xml<br>
+内容见源代码<br>
+命令行运行gradlew mymy 生成xml mapper和entity,dao<br>
 
-刚开始在依赖里已经选了myBatis
+刚开始在依赖里已经选了myBatis<br>
 在web的application.properties里增加配置：
+```
 mybatis.mapper-locations=classpath:mapper/*.xml,classpath:mapper/ext/*.xml
 mybatis.type-aliases-package=com.example.bootTest.app.db.entity
+```
 在APP项目的com.example.demo4.app下增加类Appconfig:
 ```
 @Configuration
