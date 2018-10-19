@@ -1,5 +1,7 @@
 一个比较完整的gradle多项目例子, springboot框架, 使用mybatis
-1: https://start.spring.io/ 
+
+#1: 初始化
+https://start.spring.io/ 
 选择：Gradle
 Artifact：bootTest
 boot版本2.06
