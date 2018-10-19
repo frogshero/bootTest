@@ -1,17 +1,16 @@
 一个比较完整的gradle多项目例子, springboot框架, 使用mybatis
 
 ### 1: 初始化
-https://start.spring.io/
-选择：Gradle
-Artifact：bootTest
-boot版本2.06
+https://start.spring.io/ <br>
+选择：Gradle <br>
+Artifact：bootTest<br>
+boot版本2.06<br>
 依赖加：Web Lombok Security Actuator DevTools MySql MyBatis
 
 ### 2：建立子项目
-下载解压后
-根目录新建3文件夹：web app common
-把根目录的src复制到3个目录下
-把根目录的src删除
+下载解压后,根目录新建3文件夹：web app common<br>
+把根目录的src复制到3个目录下<br>
+把根目录的src删除<br>
 common新建文件build.gradle，内容就一行：
 archivesBaseName = 'bootTest-common'
 app的内容为：
@@ -30,7 +29,7 @@ dependencies {
 ```
 
 ### 3:添加子项目
-根目录的settings.gradle 添加：include 'web', 'app', 'common'
+根目录的settings.gradle 添加：include 'web', 'app', 'common'<br>
 根目录的build.gradle：把除了buildscript之外的内容全部扩在subprojects里：
 ```
 subprojects {
@@ -41,14 +40,18 @@ subprojects {
 
 ### 4：配置数据源，security
 在web下的src/main/resource/application.properties添加数据源配置：
+```
 spring.datasource.driver-class-name=com.mysql.jdbc.Driver
 spring.datasource.url=jdbc:mysql://127.0.0.1:3307/test?useSSL=false&useUnicode=true&characterEncoding=utf8
 spring.datasource.username=test
 spring.datasource.password=test
+```
 spring security用户配置
+```
 spring.security.user.name=aa
 spring.security.user.password=aa
 spring.security.user.roles=admin
+```
 
 web工程下的BootTestApplication改写如下：
 ```
