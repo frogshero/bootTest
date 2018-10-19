@@ -1,13 +1,12 @@
 一个比较完整的gradle多项目例子, springboot框架, 使用mybatis<br>
 
-1: 初始化
--
-https://start.spring.io/ <br><br>
-选择：Gradle<br>
-Artifact：bootTest<br>
-boot版本2.06<br>
-依赖加：Web Lombok Security Actuator DevTools MySql MyBatis<br>
-<br>
+## 1: 初始化
+https://start.spring.io/
+选择：Gradle
+Artifact：bootTest
+boot版本2.06
+依赖加：Web Lombok Security Actuator DevTools MySql MyBatis
+
 2：建立子项目
 -
 下载解压后<br>
@@ -22,10 +21,12 @@ dependencies {<br>
 	compile project(":common")<br>
 }<br>
 web的内容为：<br>
+```
 archivesBaseName = 'bootTest-web'<br>
 dependencies {<br>
 	compile project(":app")<br>
-}<br>
+}
+```
 <br>
 3:添加子项目
 -
