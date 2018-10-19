@@ -1,14 +1,13 @@
 一个比较完整的gradle多项目例子, springboot框架, 使用mybatis<br>
 
-## 1: 初始化
+### 1: 初始化
 https://start.spring.io/
 选择：Gradle
 Artifact：bootTest
 boot版本2.06
 依赖加：Web Lombok Security Actuator DevTools MySql MyBatis
 
-2：建立子项目
--
+### 2：建立子项目
 下载解压后<br>
 根目录新建3文件夹：web app common<br>
 把根目录的src复制到3个目录下<br>
@@ -28,8 +27,7 @@ dependencies {<br>
 }
 ```
 <br>
-3:添加子项目
--
+### 3:添加子项目
 根目录的settings.gradle 添加：include 'web', 'app', 'common'<br>
 根目录的build.gradle：把除了buildscript之外的内容全部扩在subprojects里：<br>
 subprojects {<br>
@@ -37,8 +35,7 @@ subprojects {<br>
 	......<br>
 }<br>
 <br>
-4：配置数据源，security
--
+### 4：配置数据源，security
 在web下的src/main/resource/application.properties添加数据源配置：<br>
 spring.datasource.driver-class-name=com.mysql.jdbc.Driver<br>
 spring.datasource.url=jdbc:mysql://127.0.0.1:3307/test?useSSL=false&useUnicode=true&characterEncoding=utf8<br>
@@ -62,15 +59,13 @@ public class BootTestApplication {<br>
 	}<br>
 }<br>
 <br>
-5:测试启动
--
+### 5:测试启动
 用ideal导入整个项目<br>
 run web工程下的BootTestApplication<br>
 浏览器输入：http://localhost:8080/test 可见“test”<br>
 <br>
 <br>
-6:springboot打包的问题
--
+### 6:springboot打包的问题
 在terminal窗口build<br>
 gradlew build -x test<br>
 可以在web项目下的build\libs目录下看到bootTest-web-0.0.1-SNAPSHOT.jar<br>
@@ -94,8 +89,7 @@ dependencyManagement {<br>
 再gradlew build -x test<br>
 可以发现bootTest-web-0.0.1-SNAPSHOT.jar变为20多M<br>
 <br>
-7:mybatis自动生成和其他配置
--
+### 7:mybatis自动生成和其他配置
 增加mybatis自动生成：<br>
 bootTest根目录下增加文件：<br>
 build-mybatis.gradle<br>
