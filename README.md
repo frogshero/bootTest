@@ -11,8 +11,8 @@ boot版本2.06<br>
 下载解压后,根目录新建3文件夹：web app common<br>
 把根目录的src复制到3个目录下<br>
 把根目录的src删除<br>
-common新建文件build.gradle，内容就一行：
-archivesBaseName = 'bootTest-common'
+common新建文件build.gradle，内容就一行：<br>
+archivesBaseName = 'bootTest-common'<br>
 app的内容为：
 ```
 archivesBaseName = 'bootTest-app'
@@ -105,6 +105,7 @@ build-mybatis.gradle<br>
 generatorConfig-mysql.xml<br>
 内容见源代码<br>
 命令行运行gradlew mymy 生成xml mapper和entity,dao<br>
+把生成的dao加上@Repository
 
 刚开始在依赖里已经选了myBatis<br>
 在web的application.properties里增加配置：
