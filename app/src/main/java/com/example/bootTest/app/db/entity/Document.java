@@ -1,4 +1,4 @@
-package com.example.bootTest.db.entity;
+package com.example.bootTest.app.db.entity;
 
 import java.util.Date;
 

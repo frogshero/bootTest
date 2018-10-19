@@ -20,17 +20,17 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="com.example.bootTest.db.entity"
+        <javaModelGenerator targetPackage="com.example.bootTest.app.db.entity"
                             targetProject="${targetProject}">
             <property name="enableSubPackages" value="false"/>
             <property name="trimStrings" value="false"/>
         </javaModelGenerator>
-        <sqlMapGenerator targetPackage="com.example.bootTest.db.mapper"
+        <sqlMapGenerator targetPackage="com.example.bootTest.app.db.mapper"
                          targetProject="${targetProject}">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.example.bootTest.db.dao"
+                             targetPackage="com.example.bootTest.app.db.dao"
                              targetProject="${targetProject}">
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>

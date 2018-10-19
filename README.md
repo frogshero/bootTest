@@ -112,10 +112,10 @@ generatorConfig-mysql.xml<br>
 mybatis.mapper-locations=classpath:mapper/*.xml,classpath:mapper/ext/*.xml
 mybatis.type-aliases-package=com.example.bootTest.app.db.entity
 ```
-在APP项目的com.example.demo4.app下增加类Appconfig:
+在APP项目的com.example.bootTest.app下增加类Appconfig:
 ```
 @Configuration
-@MapperScan("com.example.demo4.app.db.dao")
+@MapperScan("com.example.bootTest.app.db.dao")
 public class AppConfig {
 }
 ```

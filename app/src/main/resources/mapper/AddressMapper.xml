@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.bootTest.db.dao.AddressMapper" >
-  <resultMap id="BaseResultMap" type="com.example.bootTest.db.entity.Address" >
+<mapper namespace="com.example.bootTest.app.db.dao.AddressMapper" >
+  <resultMap id="BaseResultMap" type="com.example.bootTest.app.db.entity.Address" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="province" property="province" jdbcType="VARCHAR" />
     <result column="city" property="city" jdbcType="VARCHAR" />
@@ -23,7 +23,7 @@
     delete from address
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.example.bootTest.db.entity.Address" >
+  <insert id="insert" parameterType="com.example.bootTest.app.db.entity.Address" >
     <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -34,7 +34,7 @@
       #{detailAddr,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtUpdate,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.example.bootTest.db.entity.Address" >
+  <insert id="insertSelective" parameterType="com.example.bootTest.app.db.entity.Address" >
     <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -80,7 +80,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.bootTest.db.entity.Address" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.bootTest.app.db.entity.Address" >
     update address
     <set >
       <if test="province != null" >
@@ -104,7 +104,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.bootTest.db.entity.Address" >
+  <update id="updateByPrimaryKey" parameterType="com.example.bootTest.app.db.entity.Address" >
     update address
     set province = #{province,jdbcType=VARCHAR},
       city = #{city,jdbcType=VARCHAR},

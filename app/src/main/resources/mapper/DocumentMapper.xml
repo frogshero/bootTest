@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.bootTest.db.dao.DocumentMapper" >
-  <resultMap id="BaseResultMap" type="com.example.bootTest.db.entity.Document" >
+<mapper namespace="com.example.bootTest.app.db.dao.DocumentMapper" >
+  <resultMap id="BaseResultMap" type="com.example.bootTest.app.db.entity.Document" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="loan_app_id" property="loanAppId" jdbcType="BIGINT" />
     <result column="user_id" property="userId" jdbcType="BIGINT" />
@@ -29,7 +29,7 @@
     delete from document
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.example.bootTest.db.entity.Document" >
+  <insert id="insert" parameterType="com.example.bootTest.app.db.entity.Document" >
     <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -42,7 +42,7 @@
       #{location,jdbcType=VARCHAR}, #{operateSelect,jdbcType=INTEGER}, #{deleted,jdbcType=INTEGER}, 
       #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtUpdate,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.bootTest.db.entity.Document" >
+  <insert id="insertSelective" parameterType="com.example.bootTest.app.db.entity.Document" >
     <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -118,7 +118,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.bootTest.db.entity.Document" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.bootTest.app.db.entity.Document" >
     update document
     <set >
       <if test="loanAppId != null" >
@@ -157,7 +157,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.bootTest.db.entity.Document" >
+  <update id="updateByPrimaryKey" parameterType="com.example.bootTest.app.db.entity.Document" >
     update document
     set loan_app_id = #{loanAppId,jdbcType=BIGINT},
       user_id = #{userId,jdbcType=BIGINT},

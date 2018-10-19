@@ -47,15 +47,15 @@ mybatisGeneratorTask.doFirst {
 }
 
 task copyXml(type: Copy, dependsOn: 'mybatisGeneratorTask') {
-    def root = buildDir.getAbsolutePath() + '\\mybatisGenerate\\com\\example\\bootTest\\db'
+    def root = buildDir.getAbsolutePath() + '\\mybatisGenerate\\com\\example\\bootTest\\app.\\db'
     def destRes = rootDir.getAbsolutePath() + '\\app\\src\\main\\resources\\mapper'
     from root + "\\mapper"
     into destRes
 }
 
 task copyJava(type: Copy, dependsOn: 'mybatisGeneratorTask') {
-    def root = buildDir.getAbsolutePath() + '\\mybatisGenerate\\com\\example\\bootTest\\db'
-    def destCodeDir = rootDir.getAbsolutePath() + '\\app\\src\\main\\java\\com\\example\\bootTest\\db'
+    def root = buildDir.getAbsolutePath() + '\\mybatisGenerate\\com\\example\\bootTest\\app\\db'
+    def destCodeDir = rootDir.getAbsolutePath() + '\\app\\src\\main\\java\\com\\example\\bootTest\\app\\db'
     from root
     into destCodeDir
 

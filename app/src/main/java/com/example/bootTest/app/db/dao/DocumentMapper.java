@@ -1,6 +1,6 @@
-package com.example.bootTest.db.dao;
+package com.example.bootTest.app.db.dao;
 
-import com.example.bootTest.db.entity.Document;
+import com.example.bootTest.app.db.entity.Document;
 
 public interface DocumentMapper {
     int deleteByPrimaryKey(Long id);
