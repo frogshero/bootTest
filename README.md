@@ -120,3 +120,12 @@ mybatis.type-aliases-package=com.example.bootTest.app.db.entity
 public class AppConfig {
 }
 ```
+
+### 8:登录
+增加依赖 implementation "org.springframework.boot:spring-boot-starter-thymeleaf"<br>
+增加一个模版login.html到templates下, thymeleaf默认读取templates下的模版<br>
+thymeleaf自动会添加csrf保护<br>
+ApplicationSecurity：spring security配置<br>
+TestUserService：用户数据访问<br>
+用户密码在BootTestApplicationTests中转换，用默认的bcrypt encoder.
+

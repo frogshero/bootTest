@@ -1,6 +1,6 @@
-package com.example.bootTest.web;
+package com.example.bootTest.web.controller;
 
-import com.example.bootTest.app.db.service.TestService;
+import com.example.bootTest.app.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +14,6 @@ public class TestController {
 
   @GetMapping("/test/{id}")
   public String getInfo(@PathVariable Long id) {
-    return testService.getAddressJson(id);
+    return "test";
   }
 }

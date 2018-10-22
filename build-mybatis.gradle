@@ -60,7 +60,7 @@ task copyJava(type: Copy, dependsOn: 'mybatisGeneratorTask') {
     into destCodeDir
 
     include 'entity/*.java'
-    include 'dao/*.java'
+    //include 'dao/*.java'
 }
 
 task mymy(dependsOn: ['copyXml', 'copyJava']) {
