@@ -2,6 +2,8 @@ package com.example.bootTest.web.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
@@ -12,7 +14,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import javax.sql.DataSource;
 
 @Configuration
-@Controller
 public class ApplicationSecurity extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
 
   @Override
@@ -22,9 +23,19 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter implements
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    http.authorizeRequests().antMatchers("/css/**").permitAll().anyRequest()
-            .fullyAuthenticated().and().formLogin().loginPage("/login")
-            .failureUrl("/login?error").permitAll().and().logout().permitAll();
+    http.authorizeRequests().antMatchers("/css/**").permitAll()
+      .antMatchers("/user/**").hasRole("user")
+      .antMatchers("/admin/**").hasRole("admin")
+      .antMatchers("/test/**").access("hasRole('amdin') and hasRole('user')")
+      .anyRequest()
+      .fullyAuthenticated().and().formLogin().loginPage("/login")
+      .failureUrl("/login?error").permitAll().and().logout().permitAll();
   }
 
+  @Bean
+  RoleHierarchy roleHierarchy() {
+    RoleHierarchyImpl result = new RoleHierarchyImpl();
+    result.setHierarchy("ROLE_admin > ROLE_user");
+    return result;
+  }
 }

@@ -1,0 +1,24 @@
+task myTest << {
+//    def aa = '111111'
+//    def s = { -> /xcv
+//sdfas ${aa}
+//cc
+///
+//    }
+//    def ss = "" +
+//            " ${aa} xx"
+//    println s();
+//
+//    aa = '2222222'
+//    println s();
+
+    def ff = new File("d://fix.txt")
+    def content = ff.text
+    ff.delete();
+    ff.withPrintWriter {
+        //it.println("999999999955999999999999".replaceAll("55", '----'))
+        it.println(content)
+        //ff.text cannot be read
+        //it.println(f.text.replaceAll('844424930136572', '11111111111111111111111'))
+    }
+}

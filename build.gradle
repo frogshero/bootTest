@@ -11,6 +11,7 @@ buildscript {
 }
 
 apply from: 'build-mybatis.gradle'
+apply from: 'test.gradle'
 
 subprojects {
 	apply plugin: 'java'

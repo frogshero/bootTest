@@ -2,7 +2,9 @@ package com.example.bootTest.app.db.dao;
 
 import com.example.bootTest.app.db.entity.ProcessLog;
 
-public interface ProcessLogMapper {
+import com.example.bootTest.app.db.generic.GenericMapper;
+
+public interface ProcessLogMapper extends GenericMapper<ProcessLog, Long> {
     int deleteByPrimaryKey(Long id);
 
     int insert(ProcessLog record);

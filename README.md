@@ -104,8 +104,7 @@ bootTest根目录下增加文件：<br>
 build-mybatis.gradle<br>
 generatorConfig-mysql.xml<br>
 内容见源代码<br>
-命令行运行gradlew mymy 生成xml mapper和entity,dao<br>
-把生成的dao加上@Repository
+命令行运行gradlew mymy 生成xml mapper和entity,mapper<br>
 
 刚开始在依赖里已经选了myBatis<br>
 在web的application.properties里增加配置：
@@ -116,7 +115,7 @@ mybatis.type-aliases-package=com.example.bootTest.app.db.entity
 在APP项目的com.example.bootTest.app下增加类Appconfig:
 ```
 @Configuration
-@MapperScan("com.example.bootTest.app.db.dao")
+@MapperScan("com.example.bootTest.app.db.repo")
 public class AppConfig {
 }
 ```

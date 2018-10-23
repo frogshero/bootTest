@@ -2,7 +2,9 @@ package com.example.bootTest.app.db.dao;
 
 import com.example.bootTest.app.db.entity.TestAuthority;
 
-public interface TestAuthorityMapper {
+import com.example.bootTest.app.db.generic.GenericMapper;
+
+public interface TestAuthorityMapper extends GenericMapper<TestAuthority, Long> {
     int deleteByPrimaryKey(Long id);
 
     int insert(TestAuthority record);

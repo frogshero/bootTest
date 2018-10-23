@@ -2,7 +2,11 @@ package com.example.bootTest.app.db.dao;
 
 import com.example.bootTest.app.db.entity.TestRole;
 
-public interface TestRoleMapper {
+import com.example.bootTest.app.db.generic.GenericMapper;
+
+import java.util.List;
+
+public interface TestRoleMapper extends GenericMapper<TestRole, Long> {
     int deleteByPrimaryKey(Long id);
 
     int insert(TestRole record);
@@ -10,6 +14,7 @@ public interface TestRoleMapper {
     int insertSelective(TestRole record);
 
     TestRole selectByPrimaryKey(Long id);
+    List<TestRole> selectUserRoles(Long userId);
 
     int updateByPrimaryKeySelective(TestRole record);
 

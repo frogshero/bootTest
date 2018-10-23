@@ -2,7 +2,9 @@ package com.example.bootTest.app.db.dao;
 
 import com.example.bootTest.app.db.entity.TestUserRole;
 
-public interface TestUserRoleMapper {
+import com.example.bootTest.app.db.generic.GenericMapper;
+
+public interface TestUserRoleMapper extends GenericMapper<TestUserRole, Long> {
     int deleteByPrimaryKey(Long id);
 
     int insert(TestUserRole record);

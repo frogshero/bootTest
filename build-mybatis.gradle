@@ -47,7 +47,7 @@ mybatisGeneratorTask.doFirst {
 }
 
 task copyXml(type: Copy, dependsOn: 'mybatisGeneratorTask') {
-    def root = buildDir.getAbsolutePath() + '\\mybatisGenerate\\com\\example\\bootTest\\app.\\db'
+    def root = buildDir.getAbsolutePath() + '\\mybatisGenerate\\com\\example\\bootTest\\app\\db'
     def destRes = rootDir.getAbsolutePath() + '\\app\\src\\main\\resources\\mapper'
     from root + "\\mapper"
     into destRes
@@ -60,8 +60,55 @@ task copyJava(type: Copy, dependsOn: 'mybatisGeneratorTask') {
     into destCodeDir
 
     include 'entity/*.java'
-    //include 'dao/*.java'
+    //include 'dao/*.java' //可能会覆盖自定义的方法
 }
+
+//copyJava << {
+//    //product XXXXRepo.java and make sure XXXXMapper extend GenericMapper
+//    def destCodeDir = rootDir.getAbsolutePath() + '\\app\\src\\main\\java\\com\\example\\bootTest\\app\\db'
+//    def dir = new File(destCodeDir + "\\entity")
+//
+//    def entityName = '';
+//    def repoClass = { -> /package com.example.bootTest.app.db.repo;
+//
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Repository;
+//import com.example.bootTest.app.db.entity.${entityName};
+//import com.example.bootTest.app.db.dao.${entityName}Mapper;
+//import com.example.bootTest.app.db.generic.GenericMapper;
+//import com.example.bootTest.app.db.generic.GenericRepository;
+//
+//@Repository
+//public class ${entityName}Repo extends GenericRepository<${entityName}, Long> {
+//  @Autowired
+//  private ${entityName}Mapper mapper;
+//
+//  @Override
+//  protected GenericMapper<${entityName}, Long> getGenericMapper() {
+//    return mapper;
+//  }
+//}
+/// }
+//    dir.eachFile {
+//        entityName = it.getName().split('\\.')[0];
+//        def f = new File(destCodeDir + "\\repo\\" + entityName + "Repo.java");
+//        f.withPrintWriter {
+//            it.println(repoClass());
+//        }
+//
+//        def mapperFile = new File(destCodeDir + "\\dao\\" + entityName + "Mapper.java")
+//        def o = "public interface ${entityName}Mapper \\{"
+//        def n = /import com.example.bootTest.app.db.generic.GenericMapper;
+//
+//public interface ${entityName}Mapper extends GenericMapper<${entityName}, Long> {/
+//        def content = mapperFile.text.replaceAll(o, n);
+//        mapperFile.delete()
+//        mapperFile.withPrintWriter {
+//            it.println(content)
+//        }
+//    }
+//
+//}
 
 task mymy(dependsOn: ['copyXml', 'copyJava']) {
     doLast {
