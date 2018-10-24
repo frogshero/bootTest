@@ -101,7 +101,7 @@ dependencyManagement {
 ### 7:mybatis自动生成和其他配置
 增加mybatis自动生成：<br>
 bootTest根目录下增加文件：<br>
-build-mybatis.gradle<br>
+build-mybatis.gradle: 还会自动生成repository类，继承GenericMapper和GenericRepository,自动copy到目标目录<br>
 generatorConfig-mysql.xml<br>
 内容见源代码<br>
 命令行运行gradlew mymy 生成xml mapper和entity,mapper<br>

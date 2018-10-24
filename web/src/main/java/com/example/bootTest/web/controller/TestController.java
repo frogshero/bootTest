@@ -3,18 +3,28 @@ package com.example.bootTest.web.controller;
 import com.example.bootTest.app.db.entity.TestUser;
 import com.example.bootTest.app.service.UserService;
 import com.example.bootTest.web.security.LoginUser;
+import io.micrometer.core.annotation.Timed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
+@Timed
 @RestController
 public class TestController {
 
   @Autowired
   private UserService testService;
+
+  @PostMapping("/afterLogin")
+  public String postAfterLogin(HttpServletRequest req) {
+    return req.getRequestURI();
+  }
 
   @GetMapping("/test/{id}")
   public String getInfo(@PathVariable Long id) {
