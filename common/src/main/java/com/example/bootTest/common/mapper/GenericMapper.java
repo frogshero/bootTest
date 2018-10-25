@@ -1,4 +1,4 @@
-package com.example.bootTest.app.db.generic;
+package com.example.bootTest.common.mapper;
 
 public interface GenericMapper<T, PK> {
 

@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.example.bootTest.app.db.entity.ProcessLog;
 import com.example.bootTest.app.db.dao.ProcessLogMapper;
-import com.example.bootTest.app.db.generic.GenericMapper;
-import com.example.bootTest.app.db.generic.GenericRepository;
+import com.example.bootTest.common.mapper.GenericMapper;
+import com.example.bootTest.common.mapper.GenericRepository;
 
 @Repository
 public class ProcessLogRepo extends GenericRepository<ProcessLog, Long> {

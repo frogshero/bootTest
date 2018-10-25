@@ -2,7 +2,7 @@ package com.example.bootTest.app.db.dao;
 
 import com.example.bootTest.app.db.entity.TestRole;
 
-import com.example.bootTest.app.db.generic.GenericMapper;
+import com.example.bootTest.common.mapper.GenericMapper;
 
 import java.util.List;
 
