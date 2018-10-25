@@ -1,6 +1,8 @@
-package com.example.bootTest.common.exception;
+package com.example.bootTest.web.utility;
 
 
+import com.example.bootTest.common.exception.ErrorCode;
+import com.example.bootTest.common.exception.TestAppException;
 import com.example.bootTest.common.reponse.ApiResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

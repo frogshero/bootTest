@@ -1,4 +1,4 @@
-一个比较完整的gradle多项目例子, springboot框架, 使用mybatis
+一个比较完整的gradle多项目例子, 使用了springBoot, springSecurity, mybatis, springfox-swagger2
 
 ### 1: 初始化
 https://start.spring.io/ <br>
