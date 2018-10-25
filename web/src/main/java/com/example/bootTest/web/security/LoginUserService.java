@@ -15,8 +15,9 @@ import org.springframework.util.Assert;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//必须有@EnableWebSecurity
 @Component
-public class TestUserService implements UserDetailsService {
+public class LoginUserService implements UserDetailsService {
 
   @Autowired
   private UserService userService;

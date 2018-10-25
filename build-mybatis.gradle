@@ -53,15 +53,15 @@ task copyXml(type: Copy, dependsOn: 'mybatisGeneratorTask') {
     into destRes
 }
 
-task copyJava(type: Copy, dependsOn: 'mybatisGeneratorTask') {
-    def root = buildDir.getAbsolutePath() + '\\mybatisGenerate\\com\\example\\bootTest\\app\\db'
-    def destCodeDir = rootDir.getAbsolutePath() + '\\app\\src\\main\\java\\com\\example\\bootTest\\app\\db'
-    from root
-    into destCodeDir
-
-    include 'entity/*.java'
-    //include 'dao/*.java' //可能会覆盖自定义的方法
-}
+//task copyJava(type: Copy, dependsOn: 'mybatisGeneratorTask') {
+//    def root = buildDir.getAbsolutePath() + '\\mybatisGenerate\\com\\example\\bootTest\\app\\db'
+//    def destCodeDir = rootDir.getAbsolutePath() + '\\app\\src\\main\\java\\com\\example\\bootTest\\app\\db'
+//    from root
+//    into destCodeDir
+//
+//    include 'entity/*.java'
+//    include 'dao/*.java' //可能会覆盖自定义的方法
+//}
 
 //copyJava << {
 //    //product XXXXRepo.java and make sure XXXXMapper extend GenericMapper

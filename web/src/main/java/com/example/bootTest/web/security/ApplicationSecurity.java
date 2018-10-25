@@ -7,12 +7,9 @@ import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.provisioning.JdbcUserDetailsManager;
-import org.springframework.stereotype.Controller;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-import javax.sql.DataSource;
 
 @Configuration
 public class ApplicationSecurity extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
@@ -32,17 +29,20 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter implements
     http.authorizeRequests().antMatchers("/css/**").permitAll()
       .antMatchers("/user/**").hasRole("user")
       .antMatchers("/admin/**").hasRole("admin")
-      .antMatchers("/test/**").access("hasRole('amdin') and hasRole('user')")
-      .anyRequest()
-      .fullyAuthenticated().and().formLogin().loginPage("/login").defaultSuccessUrl(defaultSuccessUrl)
+      //.antMatchers("/test/**").access("hasRole('amdin') and hasRole('user')")
+      .anyRequest().fullyAuthenticated()
+      .and().formLogin().loginPage("/login").defaultSuccessUrl(defaultSuccessUrl)
        //.successForwardUrl("/afterLogin") forward到一个post service
-      .failureUrl("/login?error").permitAll().and().logout().permitAll();
+      .failureUrl("/login?error").permitAll()
+      .and().cors()
+      .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET")).permitAll().logoutSuccessUrl("/login").deleteCookies("JSESSIONID");
   }
 
   @Bean
-  RoleHierarchy roleHierarchy() {
+  public RoleHierarchy roleHierarchy() {
     RoleHierarchyImpl result = new RoleHierarchyImpl();
     result.setHierarchy("ROLE_admin > ROLE_user");
     return result;
   }
+
 }
