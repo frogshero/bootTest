@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import java.sql.SQLException;
 
 @ControllerAdvice
-public class TestExceptionHandler {
+public class ControllerExceptionHandler {
 
-  private Logger logger = LoggerFactory.getLogger(TestExceptionHandler.class);
+  private Logger logger = LoggerFactory.getLogger(ControllerExceptionHandler.class);
 
   @ResponseBody
   @ExceptionHandler(MethodArgumentNotValidException.class)
