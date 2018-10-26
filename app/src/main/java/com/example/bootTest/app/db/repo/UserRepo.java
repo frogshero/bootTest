@@ -2,22 +2,22 @@ package com.example.bootTest.app.db.repo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.example.bootTest.app.db.entity.TestUser;
-import com.example.bootTest.app.db.dao.TestUserMapper;
+import com.example.bootTest.app.db.entity.User;
+import com.example.bootTest.app.db.dao.UserMapper;
 import com.example.bootTest.common.mapper.GenericMapper;
 import com.example.bootTest.common.mapper.GenericRepository;
 
 @Repository
-public class TestUserRepo extends GenericRepository<TestUser, Long> {
+public class UserRepo extends GenericRepository<User, Long> {
   @Autowired
-  private TestUserMapper mapper;
-  
+  private UserMapper mapper;
+
   @Override
-  protected GenericMapper<TestUser, Long> getGenericMapper() {
+  protected GenericMapper<User, Long> getGenericMapper() {
     return mapper;
   }
 
-  public TestUser selectByName(String userName) {
+  public User selectByName(String userName) {
     return mapper.selectByName(userName);
   }
 }

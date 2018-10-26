@@ -2,15 +2,22 @@ package com.example.bootTest.app.db.entity;
 
 import java.util.Date;
 
-public class TestRoleAuthority {
+import io.swagger.annotations.ApiModelProperty;
+
+public class  RoleAuthority {
+    @ApiModelProperty(value = "主键id", required = true)
     private Long id;
 
+    @ApiModelProperty(value = "角色id", required = true)
     private Long roleId;
 
+    @ApiModelProperty(value = "权限id", required = true)
     private String authId;
 
+    @ApiModelProperty(value = "创建时间", required = true)
     private Date createTime;
 
+    @ApiModelProperty(value = "更新时间", required = true)
     private Date updateTime;
 
     public Long getId() {

@@ -1,7 +1,7 @@
 package com.example.bootTest.web.security;
 
-import com.example.bootTest.app.db.entity.TestRole;
-import com.example.bootTest.app.db.entity.TestUser;
+import com.example.bootTest.app.db.entity.Role;
+import com.example.bootTest.app.db.entity.User;
 import com.example.bootTest.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -24,9 +24,9 @@ public class LoginUserService implements UserDetailsService {
 
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    TestUser u = userService.getTestUser(username);
+    User u = userService.getUser(username);
     Assert.notNull(u, "No such a user");
-    List<TestRole> roleList = userService.getUserRoles(u.getId());
+    List<Role> roleList = userService.getUserRoles(u.getId());
     List<GrantedAuthority> granted = roleList.stream().map(r -> new SimpleGrantedAuthority(r.getRoleName())).collect(Collectors.toList());
     LoginUser user = new LoginUser(u.getUserName(), u.getPwd(), u.getEnabled() == 1, u.getOrgId(), granted);
     return user;

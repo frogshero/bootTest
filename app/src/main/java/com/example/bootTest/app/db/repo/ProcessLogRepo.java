@@ -11,7 +11,7 @@ import com.example.bootTest.common.mapper.GenericRepository;
 public class ProcessLogRepo extends GenericRepository<ProcessLog, Long> {
   @Autowired
   private ProcessLogMapper mapper;
-  
+
   @Override
   protected GenericMapper<ProcessLog, Long> getGenericMapper() {
     return mapper;

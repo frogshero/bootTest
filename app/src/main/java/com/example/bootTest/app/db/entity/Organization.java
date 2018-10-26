@@ -2,27 +2,40 @@ package com.example.bootTest.app.db.entity;
 
 import java.util.Date;
 
-public class TestOrganization {
+import io.swagger.annotations.ApiModelProperty;
+
+public class  Organization {
+    @ApiModelProperty(value = "主键id", required = true)
     private Long id;
 
+    @ApiModelProperty(value = "名称", required = true)
     private String name;
 
+    @ApiModelProperty(value = "客户代码", required = true)
     private String code;
 
+    @ApiModelProperty(value = "统一信用代码", required = true)
     private String creditCode;
 
+    @ApiModelProperty(value = "电话")
     private String tel;
 
+    @ApiModelProperty(value = "地址")
     private String addr;
 
+    @ApiModelProperty(value = "邮箱")
     private String email;
 
+    @ApiModelProperty(value = "传真")
     private String fax;
 
+    @ApiModelProperty(value = "是否生效", required = true)
     private Integer enabled;
 
+    @ApiModelProperty(value = "创建时间", required = true)
     private Date createTime;
 
+    @ApiModelProperty(value = "更新时间", required = true)
     private Date updateTime;
 
     public Long getId() {

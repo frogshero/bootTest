@@ -2,18 +2,18 @@ package com.example.bootTest.app.db.repo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.example.bootTest.app.db.entity.TestRoleAuthority;
-import com.example.bootTest.app.db.dao.TestRoleAuthorityMapper;
+import com.example.bootTest.app.db.entity.UserRole;
+import com.example.bootTest.app.db.dao.UserRoleMapper;
 import com.example.bootTest.common.mapper.GenericMapper;
 import com.example.bootTest.common.mapper.GenericRepository;
 
 @Repository
-public class TestRoleAuthorityRepo extends GenericRepository<TestRoleAuthority, Long> {
+public class UserRoleRepo extends GenericRepository<UserRole, Long> {
   @Autowired
-  private TestRoleAuthorityMapper mapper;
-  
+  private UserRoleMapper mapper;
+
   @Override
-  protected GenericMapper<TestRoleAuthority, Long> getGenericMapper() {
+  protected GenericMapper<UserRole, Long> getGenericMapper() {
     return mapper;
   }
 }
