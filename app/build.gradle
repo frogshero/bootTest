@@ -1,5 +1,20 @@
 archivesBaseName = 'bootTest-app'
 
+//sourceSets {
+//	main {
+//		java {
+//			include "../../common/src/main/java/**"
+//		}
+//	}
+//}
+
 dependencies {
 	compile project(":common")
+}
+
+//指定哪些发布到jar
+task pubJar(type: Jar, dependsOn: ['build']) {
+	baseName 'app_client'
+	from('build/classes/java/main/', '../common/build/classes/java/main/')
+	into('/')
 }
